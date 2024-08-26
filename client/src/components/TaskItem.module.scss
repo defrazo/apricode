@@ -1,0 +1,45 @@
+@import '../styles/index.scss';
+
+.task-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    background-color: $basic__background-color;
+    border-radius: 5px;
+}
+
+.task-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: max-content;
+    padding: 10px;
+
+    &:hover {
+        background-color: $basic__hover-color;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
+.task-item__task {
+    font-size: $basic__font-size; //Заглушка для класса
+}
+
+.task-item__subtask {
+    padding-left: 50px;
+    font-size: $basic__font-size;
+}
+
+.task-item__arrow {
+    display: inline-block;
+    width: 20px;
+    user-select: none;
+    transition: transform 0.3s ease;
+    transform-origin: 30% 30%;
+
+    &--open {
+        transform: rotate(90deg);
+    }
+}

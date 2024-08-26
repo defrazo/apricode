@@ -1,0 +1,109 @@
+$basic__background-color: #444444;
+$alt__background-color: #333333;
+
+$basic__hover-color: #007bff;
+
+$basic__text-color: #ffffff;
+$alt__text-color: #333333;
+
+$field__background-color: #a9a9a9;
+
+$button__save-color: #007bff;
+$button__complete-color: #28a745;
+$button__delete-color: #dc3545;
+
+$basic__font: Verdana, sans-serif;
+
+$basic__font-size: 16px;
+$alt__font-size: 18px;
+$max__font-size: 20px;
+
+$header-height: 7vh;
+$footer-height: 7vh;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: $basic__font-size;
+    font-family: $basic__font;
+    color: $basic__text-color;
+    background-color: $basic__background-color;
+}
+
+h1 {
+    font-size: $max__font-size;
+}
+
+h2 {
+    font-size: $basic__font-size;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: $basic__font-size;
+    color: $basic__text-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &.save {
+        background-color: $button__save-color;
+    }
+
+    &.edit {
+        background-color: $button__complete-color;
+    }
+
+    &.delete {
+        background-color: $button__delete-color;
+    }
+}
+
+input[type="checkbox"] {
+    width: 5%;
+    cursor: pointer;
+}
+
+input,
+textarea {
+    font-size: $basic__font-size;
+    font-family: $basic__font;
+    color: $alt__text-color;
+    background-color: $field__background-color;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+        color: $alt__text-color;
+    }
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: $basic__background-color;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: $field__background-color;
+}
