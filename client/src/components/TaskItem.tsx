@@ -5,44 +5,107 @@ interface Task {
     id: number;
     name: string;
     description: string;
-    subtasks: string[];
+    subtasks: Task[];
+    isChecked: boolean;
 }
 
 interface TaskItemProps {
     task: Task;
     isExpanded: boolean;
     onTaskSelect: (task: Task) => void;
+    onAddSubtask: (parentId: number, newTask: Task) => void;
+    onUpdateTask: (task: Task) => void;
+    onDeleteTask: (taskId: number) => void;
+    onCheckChange: (taskId: number, checked: boolean) => void;
+    selectedTask: Task | null;
+    allChecked: boolean;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, isExpanded, onTaskSelect }) => {
-    const [isChecked, setIsChecked] = useState<boolean>(false);
+const TaskItem: React.FC<TaskItemProps> = ({
+    task,
+    isExpanded,
+    onTaskSelect,
+    onAddSubtask,
+    onUpdateTask,
+    onDeleteTask,
+    selectedTask,
+    onCheckChange,
+    allChecked
+}) => {
+
     const [showSubtasks, setShowSubtasks] = useState<boolean>(isExpanded);
+    const [newSubtaskName, setNewSubtaskName] = useState<string>('');
 
-    useEffect(() => {
-        setShowSubtasks(isExpanded);
-    }, [isExpanded]);
-
-    const handleCheck = () => setIsChecked(!isChecked);
     const toggleSubtasks = () => setShowSubtasks(!showSubtasks);
+    const handleCheck = () => {
+        const newCheckedState = !task.isChecked;
+        onCheckChange(task.id, newCheckedState);
+    };
+
+    const handleAddSubtask = () => {
+        if (newSubtaskName.trim()) {
+            const newSubtask: Task = {
+                id: Date.now(),
+                name: newSubtaskName,
+                description: '',
+                subtasks: [],
+                isChecked: false
+            };
+
+            onAddSubtask(task.id, newSubtask);
+            setNewSubtaskName('');
+        }
+
+        setShowSubtasks(isExpanded);
+    };
+
+    const handleTaskUpdate = () => {
+        onUpdateTask(task);
+    };
+
+    const handleTaskDelete = () => {
+        onDeleteTask(task.id);
+    };
 
     return (
         <div className={styles["task-container"]}>
-            <div>
-                <div className={`${styles["task-item"]}`} onClick={() => {
-                    toggleSubtasks();
-                    onTaskSelect(task);
-                }}>
-                    <div className={`${styles["task-item__arrow"]} ${showSubtasks ? styles["task-item__arrow--open"] : ""}`}>❯</div>
-                    <span className={styles["task-item__task"]}>{task.name}</span>
-                    <input type="checkbox" checked={isChecked} onChange={handleCheck} />
+            <div
+                className={`${styles["task-item"]} ${task.id === selectedTask?.id ? styles["task--active"] : ""}`}
+                onClick={() => onTaskSelect(task)}
+            >
+                <div
+                    className={`${styles["task-item__arrow"]} ${showSubtasks ? styles["task-item__arrow--open"] : ""}`}
+                    onClick={() => { toggleSubtasks() }}
+                >
+                    ❯
                 </div>
-                {showSubtasks && task.subtasks.map((subtask, index) => (
-                    <div key={index} className={`${styles["task-item"]} ${styles["task-item__subtask"]}`}>
-                        <span>{subtask}</span>
-                        <input type="checkbox" />
-                    </div>
-                ))}
+                <span className={styles["task-item__task"]}>{task.name}</span>
+                <input
+                    type="checkbox"
+                    checked={task.isChecked}
+                    onChange={handleCheck}
+                    onClick={(e) => e.stopPropagation()}
+                />
             </div>
+            {showSubtasks && (
+                <>
+                    {task.subtasks.map(subtask => (
+                        <div key={subtask.id} className={`${styles["task-item__subtask"]}`}>
+                            <TaskItem
+                                task={subtask}
+                                isExpanded={true}
+                                onTaskSelect={onTaskSelect}
+                                onAddSubtask={handleAddSubtask}
+                                onUpdateTask={handleTaskUpdate}
+                                onDeleteTask={handleTaskDelete}
+                                onCheckChange={onCheckChange}
+                                selectedTask={selectedTask}
+                                allChecked={allChecked}
+                            />
+                        </div>
+                    ))}
+                </>
+            )}
         </div>
     );
 };

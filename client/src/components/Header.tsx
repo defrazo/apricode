@@ -22,7 +22,13 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange }) => {
                 <a href="#">Задачи</a>
                 <a href="#">Заметки</a>
                 <a href="#">Календарь</a>
-                <a href="#" onClick={toggleSearchVisibility} className={isSearchVisible ? styles["search-active"] : ""}>Поиск</a>
+                <a
+                    href="#"
+                    className={isSearchVisible ? styles["search-active"] : ""}
+                    onClick={toggleSearchVisibility}
+                >
+                    Поиск
+                </a>
             </nav>
             {isSearchVisible && (
                 <input
