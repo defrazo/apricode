@@ -10,9 +10,13 @@ interface Task {
     isChecked: boolean;
 }
 
+interface MainProps {
+    searchTerm: string;
+}
+
 const LOCAL_STORAGE_KEY = 'tasks';
 
-const Main: React.FC<{ searchTerm: string }> = ({ searchTerm }) => {
+const Main: React.FC<MainProps> = ({ searchTerm }) => {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [expandedTasks, setExpandedTasks] = useState<number[]>([]);
     const [selectedTask, setSelectedTask] = useState<Task | null>(null);

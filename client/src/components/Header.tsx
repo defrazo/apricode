@@ -16,19 +16,14 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange }) => {
 
     return (
         <header className={styles["header-container"]}>
-            <img src={Logo} alt="Логотип" className={styles["logo__image"]} />
-            <span className={styles["logo__text"]}>ApriTask</span>
+            <a href="/">
+                <img src={Logo} alt="Логотип" className={styles["logo__image"]} />
+                <span className={styles["logo__text"]}>ApriTask</span>
+            </a>
             <nav className={styles["nav-links"]}>
-                <a href="#">Задачи</a>
-                <a href="#">Заметки</a>
-                <a href="#">Календарь</a>
-                <a
-                    href="#"
-                    className={isSearchVisible ? styles["search-active"] : ""}
-                    onClick={toggleSearchVisibility}
-                >
-                    Поиск
-                </a>
+                <a href="/">Главная</a>
+                <a href="/about">О приложении</a>
+                <span className={isSearchVisible ? styles["search-active"] : styles["search"]} onClick={toggleSearchVisibility}>Поиск</span>
             </nav>
             {isSearchVisible && (
                 <input

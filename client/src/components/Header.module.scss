@@ -6,7 +6,13 @@
     align-items: center;
     height: $footer-height;
     padding: 0 10%;
-    background-color: $basic__background-color;
+    background-color: var(--basic-background-color);
+
+    a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
 }
 
 .logo__image {
@@ -17,23 +23,30 @@
 .logo__text {
     font-weight: bold;
     font-size: $basic__font-size;
-    color: $basic__text-color;
+    color: var(--basic-text-color);
 }
 
 .nav-links {
+    display: flex;
+
     a {
         margin-left: 20px;
         font-size: $basic__font-size;
-        text-decoration: none;
-        color: $basic__text-color;
-
-        &.search-active {
-            padding: 1px 5px;
-            font-weight: bolder;
-            background-color: $button__complete-color;
-            border-radius: 5px;
-        }
+        color: var(--basic-text-color);
     }
+}
+
+.search {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.search-active {
+    padding: 1px 5px;
+    background-color: var(--button-complete-color);
+    border-radius: 5px;
+    margin-left: 20px;
+    cursor: pointer;
 }
 
 .search-input {

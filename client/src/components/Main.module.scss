@@ -7,7 +7,8 @@
     gap: 10px;
     height: calc(100vh - $header-height - $footer-height);
     padding: 2% 10%;
-    background-color: $alt__background-color;
+    color: var(--basic-text-color);
+    background-color: var(--alt-background-color);
 }
 
 h1,
@@ -43,7 +44,7 @@ h2 {
     align-items: center;
     width: 100%;
     padding: 10px;
-    background-color: $basic__background-color;
+    background-color: var(--basic-background-color);
     border-radius: 5px;
 }
 

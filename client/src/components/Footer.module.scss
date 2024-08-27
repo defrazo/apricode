@@ -6,5 +6,18 @@
     align-items: center;
     height: $footer-height;
     padding: 0 10%;
-    background-color: $basic__background-color;
+    color: var(--basic-text-color);
+    background-color: var(--basic-background-color);
+}
+
+.toogle {
+    height: 30px;
+    position: absolute;
+    right: 15px;
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        transform: rotate(360deg);
+    }
 }

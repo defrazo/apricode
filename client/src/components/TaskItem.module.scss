@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    background-color: $basic__background-color;
+    background-color: var(--basic-background-color);
     border-radius: 5px;
 }
 
@@ -16,7 +16,7 @@
     padding: 10px;
 
     &:hover {
-        background-color: $basic__hover-color;
+        background-color: var(--basic-hover-color);
         border-radius: 5px;
         cursor: pointer;
     }
@@ -47,10 +47,10 @@
 }
 
 .task--active {
-    background-color: $button__complete-color;
+    background-color: var(--button-complete-color);
     border-radius: 5px;
 
     &:hover {
-        background-color: $button__complete-color;
+        background-color: var(--button-complete-color);
     }
 }
