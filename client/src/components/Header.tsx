@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange }) => {
 
     return (
         <header className={styles["header-container"]}>
-            <a href="#/apricode/">
+            <a href="/apricode/#">
                 <img src={Logo} alt="Логотип" className={styles["logo__image"]} />
                 <span className={styles["logo__text"]}>ApriTask</span>
             </a>
