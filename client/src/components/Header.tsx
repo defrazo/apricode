@@ -21,8 +21,8 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange }) => {
                 <span className={styles["logo__text"]}>ApriTask</span>
             </a>
             <nav className={styles["nav-links"]}>
-                <a href="/apricode">Главная</a>
-                <a href="/apricode/about">О приложении</a>
+                <a href="/">Главная</a>
+                <a href="/about">О приложении</a>
                 <span className={isSearchVisible ? styles["search-active"] : styles["search"]} onClick={toggleSearchVisibility}>Поиск</span>
             </nav>
             {isSearchVisible && (

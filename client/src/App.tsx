@@ -40,8 +40,8 @@ const App: React.FC = () => {
             <div className="layout">
                 <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />
                 <Routes>
-                    <Route path="/apricode" element={<Main searchTerm={searchTerm} />} />
-                    <Route path="/apricode/about" element={<About />} />
+                    <Route path="/" element={<Main searchTerm={searchTerm} />} />
+                    <Route path="/about" element={<About />} />
                 </Routes>
                 <Footer onThemeToggle={handleThemeToggle} />
             </div>
