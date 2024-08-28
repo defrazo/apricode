@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange }) => {
             </a>
             <nav className={styles["nav-links"]}>
                 <a href="/apricode/">Главная</a>
-                <a href="/about">О приложении</a>
+                <a href="/apricode/about">О приложении</a>
                 <span className={isSearchVisible ? styles["search-active"] : styles["search"]} onClick={toggleSearchVisibility}>Поиск</span>
             </nav>
             {isSearchVisible && (
