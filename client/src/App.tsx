@@ -36,7 +36,7 @@ const App: React.FC = () => {
     };
 
     return (
-        <Router>
+        <Router basename="/apricode">
             <div className="layout">
                 <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />
                 <Routes>

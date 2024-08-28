@@ -16,12 +16,12 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange }) => {
 
     return (
         <header className={styles["header-container"]}>
-            <a href="/">
+            <a href="/apricode/">
                 <img src={Logo} alt="Логотип" className={styles["logo__image"]} />
                 <span className={styles["logo__text"]}>ApriTask</span>
             </a>
             <nav className={styles["nav-links"]}>
-                <a href="/">Главная</a>
+                <a href="/apricode/">Главная</a>
                 <a href="/about">О приложении</a>
                 <span className={isSearchVisible ? styles["search-active"] : styles["search"]} onClick={toggleSearchVisibility}>Поиск</span>
             </nav>
